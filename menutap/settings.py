@@ -23,10 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fl!)vhwn&gi4e%f&bp9gxg^re-#ob@8tr)$7lx+bmi=c9k@b_u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.29.73', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ["menutap.onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
