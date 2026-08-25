@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-fl!)vhwn&gi4e%f&bp9gxg^re-#ob@8tr)$7lx+bmi=c9k@b_u
 DEBUG = True
 
 ALLOWED_HOSTS = ["menutap.onrender.com"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://menutap.onrender.com",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -114,6 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
