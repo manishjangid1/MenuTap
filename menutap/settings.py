@@ -127,10 +127,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
-
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
@@ -152,11 +151,7 @@ MAILERS = {
     },
 }
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'YOUR_CLOUD_NAME',
-    'API_KEY': 'YOUR_API_KEY',
-    'API_SECRET': 'YOUR_API_SECRET',
-}
+
 
 import os
 
