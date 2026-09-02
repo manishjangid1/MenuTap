@@ -32,18 +32,23 @@ CSRF_TRUSTED_ORIGINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage', # <-- Yahan top par hona chahiye
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'cloudinary_storage',
     'cloudinary',
-
     'menu',
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'apna_real_cloud_name',
+    'API_KEY': 'apni_real_api_key',
+    'API_SECRET': 'apna_real_api_secret'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
