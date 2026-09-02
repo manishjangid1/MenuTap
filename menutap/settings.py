@@ -141,6 +141,10 @@ STORAGES = {
     },
 }
 
+# Compatibility ke liye ye line add karein taaki cloudinary error na de:
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 from pathlib import Path
 
 import cloudinary
