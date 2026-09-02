@@ -90,7 +90,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Cloudinary Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('nvprwlkq', ''),
-    'API_KEY': os.environ.get('287248521182818, ''),
+    'API_KEY': os.environ.get('287248521182818', ''),
     'API_SECRET': os.environ.get('Nzeb_MEwQL60oa6jxVSMv-gwL6E', ''),
 }
 
