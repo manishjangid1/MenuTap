@@ -1,14 +1,9 @@
-"""
-Django settings for menutap project.
-"""
-
 import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-fl!)vhwn&gi4e%f&bp9gxg^re-#ob@8tr)$7lx+bmi=c9k@b_u'
@@ -22,15 +17,15 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
 ]
 
-# Application definition
+# Order matters: staticfiles BEFORE cloudinary_storage fixes admin panel CSS
 INSTALLED_APPS = [
-    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     'menu',
 ]
@@ -84,7 +79,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -98,7 +92,6 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'Nzeb_MEwQL60oa6jxVSMv-gwL6E'),
 }
 
-# Explicit Cloudinary SDK Config (Fixes template tag error)
 cloudinary.config(
     cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME', 'nvprwlkq'),
     api_key=os.environ.get('CLOUDINARY_API_KEY', '287248521182818'),
@@ -106,6 +99,7 @@ cloudinary.config(
     secure=True
 )
 
+# Standard Django Static Storage prevents missing file crashes
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -116,7 +110,6 @@ STORAGES = {
 }
 
 WHITENOISE_MANIFEST_STRICT = False
-
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
