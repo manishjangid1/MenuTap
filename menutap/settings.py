@@ -10,12 +10,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-fl!)vhwn&gi4e%f&bp9gxg^re-#ob@8tr)$7lx+bmi=c9k@b_u'
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["menutap.onrender.com", "localhost", "127.0.0.1", "*"]
+
+ALLOWED_HOSTS = ['menutap.onrender.com', '.onrender.com', 'localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://menutap.onrender.com",
+    'https://menutap.onrender.com',
+    'https://*.onrender.com',
 ]
 
 # Application definition
