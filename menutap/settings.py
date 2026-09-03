@@ -3,6 +3,9 @@ Django settings for menutap project.
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -10,8 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-fl!)vhwn&gi4e%f&bp9gxg^re-#ob@8tr)$7lx+bmi=c9k@b_u'
 
-DEBUG = True
-
+DEBUG = False
 
 ALLOWED_HOSTS = ['menutap.onrender.com', '.onrender.com', 'localhost', '127.0.0.1']
 
@@ -45,6 +47,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'menutap.urls'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -90,13 +93,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Cloudinary Configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('nvprwlkq', ''),
-    'API_KEY': os.environ.get('287248521182818', ''),
-    'API_SECRET': os.environ.get('Nzeb_MEwQL60oa6jxVSMv-gwL6E', ''),
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'nvprwlkq'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '287248521182818'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'Nzeb_MEwQL60oa6jxVSMv-gwL6E'),
 }
 
-# Modern Django Storage setup
-# Static files storage (WhiteNoise safe configuration)
+# Explicit Cloudinary SDK Config (Fixes template tag error)
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME', 'nvprwlkq'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY', '287248521182818'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET', 'Nzeb_MEwQL60oa6jxVSMv-gwL6E'),
+    secure=True
+)
+
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -106,7 +115,6 @@ STORAGES = {
     },
 }
 
-# Ignore missing static file errors
 WHITENOISE_MANIFEST_STRICT = False
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
